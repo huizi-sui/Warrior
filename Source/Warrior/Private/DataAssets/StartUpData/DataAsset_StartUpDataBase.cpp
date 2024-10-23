@@ -1,9 +1,11 @@
 // Created by Liu xijun
 
+#include "DataAssets/StartUpData/DataAsset_StartUpDataBase.h"
+
 #include "AbilitySystem/Abilities/WarriorGameplayAbility.h"
 #include "AbilitySystem/WarriorAbilitySystemComponent.h"
 
-#include "DataAssets/StartUpData/DataAsset_StartUpDataBase.h"
+
 
 void UDataAsset_StartUpDataBase::GivenToAbilitySystemComponent(UWarriorAbilitySystemComponent* InASCToGive, int32 ApplyLevel)
 {
