@@ -8,6 +8,8 @@
 
 class UBoxComponent;
 
+DECLARE_DELEGATE_OneParam(FOnTargetInteractedDelegate, AActor*);
+
 UCLASS()
 class WARRIOR_API AWarriorWeaponBase : public AActor
 {
@@ -16,6 +18,11 @@ class WARRIOR_API AWarriorWeaponBase : public AActor
 public:	
 
 	AWarriorWeaponBase();
+
+	// 开始重叠
+	FOnTargetInteractedDelegate OnWeaponHitTarget;
+	// 结束重叠
+	FOnTargetInteractedDelegate OnWeaponPulledFromTarget;
 
 protected:
 
@@ -28,4 +35,12 @@ protected:
 public:
 
 	FORCEINLINE UBoxComponent* GetWeaponCollisionBox() const { return WeaponCollisionBox; }
+
+private:
+
+	UFUNCTION()
+	void OnCollisionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+	void OnCollisionBoxEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 };
