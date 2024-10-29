@@ -112,7 +112,7 @@ void UGEExecCalc_DamageTaken::Execute_Implementation(const FGameplayEffectCustom
 	}
 
 	// Debug::Print(TEXT("BaseDamage"), BaseDamage);
-	Debug::Print(TEXT("FinalDamage"), FinalDamageDone);
+	// Debug::Print(TEXT("FinalDamage"), FinalDamageDone);
 	// Debug::Print(TEXT("SourceAttackPower"), SourceAttackPower);
 	// Debug::Print(TEXT("TargetDefensePower"), TargetDefensePower);
 	// if (UsedLightAttackComboCount != 0)

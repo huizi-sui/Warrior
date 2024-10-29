@@ -43,3 +43,8 @@ UPawnCombatComponent* AWarriorBaseCharacter::GetPawnCombatComponent() const
 {
 	return nullptr;
 }
+
+UPawnUIComponent* AWarriorBaseCharacter::GetPawnUiComponent() const
+{
+	return nullptr;
+}
