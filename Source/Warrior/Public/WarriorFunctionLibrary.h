@@ -45,4 +45,6 @@ public:
 		ExpandEnumAsExecs = "OutValidType"))
 	static UPawnCombatComponent* BP_GetPawnCombatComponent(AActor* InActor, EWarriorValidType& OutValidType);
 
+	UFUNCTION(BlueprintPure, Category = "Warrior|FunctionLibrary")
+	static bool IsTargetPawnHostile(const APawn* QueryPawn, const APawn* TargetPawn);
 };
