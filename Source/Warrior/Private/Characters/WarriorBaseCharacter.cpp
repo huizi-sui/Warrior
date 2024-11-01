@@ -3,6 +3,7 @@
 
 #include "Characters/WarriorBaseCharacter.h"
 
+#include "MotionWarpingComponent.h"
 #include "AbilitySystem/WarriorAbilitySystemComponent.h"
 #include "AbilitySystem/WarriorAttributeSet.h"
 
@@ -19,6 +20,8 @@ AWarriorBaseCharacter::AWarriorBaseCharacter()
 	// TODO: add ASC and AS to player state class, so can reuse on player restart.
 	WarriorAbilitySystemComponent = CreateDefaultSubobject<UWarriorAbilitySystemComponent>(TEXT("WarriorAbilitySystemComponent"));
 	WarriorAttributeSet = CreateDefaultSubobject<UWarriorAttributeSet>(TEXT("WarriorAttributeSet"));
+
+	MotionWarpingComponent = CreateDefaultSubobject<UMotionWarpingComponent>(TEXT("MotionWarpingComponent"));
 }
 
 void AWarriorBaseCharacter::PossessedBy(AController* NewController)
