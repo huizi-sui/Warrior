@@ -4,7 +4,7 @@
 #include "Components/Combat/EnemyCombatComponent.h"
 
 #include "AbilitySystemBlueprintLibrary.h"
-#include "WarriorDebugHelper.h"
+#include "WarriorFunctionLibrary.h"
 #include "WarriorGameplayTags.h"
 
 void UEnemyCombatComponent::OnHitTargetActor(AActor* HitActor)
@@ -17,14 +17,15 @@ void UEnemyCombatComponent::OnHitTargetActor(AActor* HitActor)
 	// 并不是所有的敌人的攻击都是可以阻挡的。
 
 	// TODO: Implement block check
+	
 	bool bIsValidBlock = false;
 
-	const bool bIsPlayerBlocking = false;
+	const bool bIsPlayerBlocking = UWarriorFunctionLibrary::NativeDoesActorHasTag(HitActor, WarriorGameplayTags::Player_Status_Blocking);
 	const bool bIsMyAttackUnblocking = false;
 
 	if (bIsPlayerBlocking && !bIsMyAttackUnblocking)
 	{
-		//TODO: check if the block is valid
+		bIsValidBlock = UWarriorFunctionLibrary::IsValidBlock(GetOwningPawn(), HitActor);
 	}
 
 	FGameplayEventData EventData;
@@ -33,7 +34,7 @@ void UEnemyCombatComponent::OnHitTargetActor(AActor* HitActor)
 	
 	if (bIsValidBlock)
 	{
-		//TODO: Handle successful block
+		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(HitActor, WarriorGameplayTags::Player_Event_SuccessfulBlock, EventData);
 	}
 	else
 	{
