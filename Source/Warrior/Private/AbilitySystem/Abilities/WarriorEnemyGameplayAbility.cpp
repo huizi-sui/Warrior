@@ -36,9 +36,6 @@ FGameplayEffectSpecHandle UWarriorEnemyGameplayAbility::MakeEnemyDamageEffectSpe
 		GetAbilityLevel(),
 		ContextHandle);
 
-	EffectSpecHandle.Data->SetSetByCallerMagnitude(
-		WarriorGameplayTags::Shared_SetByCaller_BaseDamage,
-		InDamageScalableFloat.GetValueAtLevel(GetAbilityLevel()));
-
+	EffectSpecHandle.Data->SetSetByCallerMagnitude(WarriorGameplayTags::Shared_SetByCaller_BaseDamage, InDamageScalableFloat.GetValueAtLevel(GetAbilityLevel()));
 	return EffectSpecHandle;
 }
