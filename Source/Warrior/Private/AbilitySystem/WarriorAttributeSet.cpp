@@ -26,7 +26,7 @@ void UWarriorAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCal
 	}
 	checkf(CachedPawnUIInterface.IsValid(), TEXT("%s didn't implement IPawnUIInterface"), *Data.Target.GetAvatarActor()->GetActorNameOrLabel());
 
-	const UPawnUIComponent* PawnUIComponent = CachedPawnUIInterface->GetPawnUiComponent();
+	const UPawnUIComponent* PawnUIComponent = CachedPawnUIInterface->GetPawnUIComponent();
 	const UHeroUIComponent* HeroUIComponent = CachedPawnUIInterface->GetHeroUIComponent();
 
 	checkf(PawnUIComponent, TEXT("Couldn't extrac a PawnUIComponent from %s"), *Data.Target.GetAvatarActor()->GetActorNameOrLabel());

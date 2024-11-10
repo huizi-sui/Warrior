@@ -91,7 +91,7 @@ UEnemyUIComponent* AWarriorEnemyCharacter::GetEnemyUIComponent() const
 	return EnemyUIComponent;
 }
 
-UPawnUIComponent* AWarriorEnemyCharacter::GetPawnUiComponent() const
+UPawnUIComponent* AWarriorEnemyCharacter::GetPawnUIComponent() const
 {
 	return EnemyUIComponent;
 }

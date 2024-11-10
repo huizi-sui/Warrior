@@ -1,7 +1,7 @@
 // Created by Liu xijun
 
 
-#include "DataAssets\StartUpData\DataAsset_HeroStartUpData.h"
+#include "DataAssets/StartUpData/DataAsset_HeroStartUpData.h"
 
 #include "AbilitySystem/WarriorAbilitySystemComponent.h"
 #include "AbilitySystem/Abilities/WarriorHeroGameplayAbility.h"

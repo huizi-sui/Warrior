@@ -13,6 +13,8 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAbilityIconSlotUpdatedDelegate, 
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnAbilityCooldownBegin, FGameplayTag, AbilityInputTag, float, TotalCooldownTime, float, RemainingCooldownTime);
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnStoneInteractedDelegate, bool, bShouldDisplayInputKey);
+
 /**
  * 
  */
@@ -30,8 +32,11 @@ public:
 	FOnEquippedWeaponChangedDelegate OnEquippedWeaponChanged;
 
 	UPROPERTY(BlueprintCallable, BlueprintAssignable)
-	FOnAbilityIconSlotUpdatedDelegate OnAbilityIconSlotUpdatedDelegate;
+	FOnAbilityIconSlotUpdatedDelegate OnAbilityIconSlotUpdated;
 
 	UPROPERTY(BlueprintCallable, BlueprintAssignable)
 	FOnAbilityCooldownBegin OnAbilityCooldownBegin;
+
+	UPROPERTY(BlueprintCallable, BlueprintAssignable)
+	FOnStoneInteractedDelegate OnStoneInteracted;
 };
