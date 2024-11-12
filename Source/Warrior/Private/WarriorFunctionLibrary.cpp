@@ -10,6 +10,7 @@
 #include "Interfaces/PawnCombatInterface.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "WarriorTypes/WarriorCountDownAction.h"
+#include "WarriorGameInstance.h"
 
 UWarriorAbilitySystemComponent* UWarriorFunctionLibrary::NativeGetWarriorASCFromActor(AActor* InActor)
 {
@@ -169,5 +170,49 @@ void UWarriorFunctionLibrary::CountDown(const UObject* WorldContextObject, float
 		{
 			FoundAction->CancelAction();
 		}
+	}
+}
+
+UWarriorGameInstance* UWarriorFunctionLibrary::GetWarriorGameInstance(const UObject* WorldContextObject)
+{
+	if (GEngine)
+	{
+		if (const UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull))
+		{
+			return World->GetGameInstance<UWarriorGameInstance>();
+		}
+	}
+	return nullptr;
+}
+
+void UWarriorFunctionLibrary::ToggleInputMode(const UObject* WorldContextObject, EWarriorInputMode InInputMode)
+{
+	APlayerController* PlayerController = nullptr;
+
+	if (GEngine)
+	{
+		if (const UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull))
+		{
+			PlayerController = World->GetFirstPlayerController();
+		}
+	}
+
+	if (!PlayerController)
+	{
+		return;
+	}
+
+	static const FInputModeGameOnly GameOnlyMode;
+	static const FInputModeUIOnly UIOnlyMode;
+
+	if (InInputMode == EWarriorInputMode::GameOnly)
+	{
+		PlayerController->SetInputMode(GameOnlyMode);
+		PlayerController->bShowMouseCursor = false;
+	}
+	else if (InInputMode == EWarriorInputMode::UIOnly)
+	{
+		PlayerController->SetInputMode(UIOnlyMode);
+		PlayerController->bShowMouseCursor = true;
 	}
 }
